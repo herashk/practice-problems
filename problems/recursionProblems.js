@@ -102,10 +102,8 @@ function array11(arr, index = 0) {
         return 0;
     }
     let count = 0;
-    for(let i = index; i < index + 1; i++) {
-        if (arr[i] === 11) {
-            count++;
-        }
+    if (arr[index] === 11) {
+        count++;
     }
     count = count + array11(arr, index + 1);
     return count;
@@ -118,10 +116,8 @@ function array11(arr, index) {
         if (index === arr.length) {
             return 0;
         }
-        for(let i = index; i < index + 1; i++) {
-            if (arr[i] === 11) {
-                count++;
-            }
+        if (arr[index] === 11) {
+            count++;
         }
         helper(arr, index + 1);
     }
@@ -139,10 +135,8 @@ function pairStar(string, index = 0) {
     if (index === string.length) {
         return string;
     }
-    for (let i = index; i < index + 1; i++) {
-        if (string[i] === string[i+1]) {
-            string = string.slice(0, i+1) + '*' + string.slice(i+1);
-        }
+    if (string[index] === string[index+1]) {
+        string = string.slice(0, index+1) + '*' + string.slice(index+1);
     }
     return pairStar(string, index + 1);
 }
@@ -184,14 +178,12 @@ function countHi2(string, index = 0) {
         return 0;
     }
     let count = 0;
-    for (let i = index; i < index + 1; i++) {
-        if (string[i] === 'h' && string[i+1] === 'i') {
-        //   console.log('string[i]', string[i])
-        //   console.log('string[i+1]', string[i+1])
-        //   console.log('string[i-1]', string[i-1])
-            if (string[i-1] !== 'x') {
-                count++;
-            }
+    if (string[index] === 'h' && string[index+1] === 'i') {
+    //   console.log('string[i]', string[i])
+    //   console.log('string[i+1]', string[i+1])
+    //   console.log('string[i-1]', string[i-1])
+        if (string[index-1] !== 'x') {
+            count++;
         }
     }
     count = count + countHi2(string, index + 1);
@@ -260,12 +252,10 @@ function count8(num) {
         if (string.length === 0) {
           return 0;
         }
-        for (let i = string.length - 1; i > string.length - 2; i--) {
-            if (string[i] === '8' && string[i-1] === '8') {
-                count = count + 2;
-            } else if (string[i] === '8') {
-                count++;
-            }
+        if (string[string.length - 1] === '8' && string[string.length - 1 - 1] === '8') {
+            count = count + 2;
+        } else if (string[string.length - 1] === '8') {
+            count++;
         }
         // console.log('count', count);
         helper(string.slice(0, string.length - 1));
@@ -318,10 +308,8 @@ function array220(arr, index) {
     if (index === arr.length) {
         return false;
     }
-    for (let i = index; i < index + 1; i++) {
-        if (arr[i + 1] === (arr[i] * 10)) {
-            return true;
-        }
+    if (arr[index + 1] === (arr[index] * 10)) {
+        return true;
     }
     return array220(arr, index + 1); // don't forget to return the function
 }
@@ -366,10 +354,8 @@ function count11(string, index = 0) {
         return 0;
     }
     let count = 0;
-    for (let i = index; i < index + 1; i++) {
-        if (string[i] === '1' && string[i+1] === '1') {
-            count++;
-        }
+    if (string[index] === '1' && string[index+1] === '1') {
+        count++;
     }
     // do this so that you don't count overlapping 1
     if (count > 0) {
@@ -504,10 +490,8 @@ function changeXY(string, index = 0) {
     if (index === string.length) {
         return string;
     }
-    for (let i = index; i < index + 1; i++) {
-        if (string[i] === 'x') {
-            string = string.replace(string[i], 'y');
-        }
+    if (string[index] === 'x') {
+        string = string.replace(string[index], 'y');
     }
     return changeXY(string, index + 1);
 }
@@ -522,10 +506,8 @@ function array6(arr, index) {
     if (index === arr.length) {
         return false;
     }
-    for (let i = index; i < index + 1; i++) {
-        if (arr[i] === 6) {
-            return true;
-        }
+    if (arr[index] === 6) {
+        return true;
     }
     return array6(arr, index + 1);
 }
@@ -541,9 +523,7 @@ function allStar(string, index = 0) {
     if (index >= string.length) {
         return string;
     }
-    for (let i = index; i < index + 1; i++) {
-        string = string.slice(0, i+1) + '*' + string.slice(i+1);
-    }
+    string = string.slice(0, index+1) + '*' + string.slice(index+1);
     return allStar(string, index + 2);
 }
 
@@ -559,11 +539,9 @@ function countPairs(string) {
         return 0;
     }
     let count = 0;
-    for(let i = 0; i < 1; i++) {
-        const char = string[i];
-        if (char !== string[i+1] && char === string[i+2]) {
-            count++;
-        }
+    const char = string[0];
+    if (char !== string[1] && char === string[2]) {
+        count++;
     }
     count = count + countPairs(string.slice(1));
     return count;
@@ -580,11 +558,9 @@ function stringClean(string, index = 0) {
         return string;
     }
     let sliced = false;
-    for (let i = index; i < index + 1; i++) {
-        if (string[i] === string[i+1]) {
-            string = string.slice(0, i+1) + string.slice(i+2);
-            sliced = true;
-        }
+    if (string[index] === string[index+1]) {
+        string = string.slice(0, index+1) + string.slice(index+2);
+        sliced = true;
     }
     if (sliced) {
         return stringClean(string, index);
